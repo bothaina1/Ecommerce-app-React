@@ -41,7 +41,10 @@ function Header() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="navbar-nav">
+        <Link className="nav-link " to="/register">
+          Register
+        </Link>
         <Link className="nav-link mx-5" to="/cart">
           <CartIcon count={30} />
         </Link>

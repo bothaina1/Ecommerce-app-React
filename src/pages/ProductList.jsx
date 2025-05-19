@@ -1,27 +1,33 @@
-import React from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { getProducts } from '../apis/products'
 import { ProductCard } from '../components/ProductCard' 
+import { Pagination } from '../components/pagination'
 
  const ProductList = () => {
    
-  const[products, setProducts] = React.useState([])
+  const[products, setProducts] = useState([])
+    const [page, setPage] = useState(1);
+
 
   useEffect(()=>{
-    getProducts()
+    getProducts(page)
     .then((res)=>{setProducts(res.data.products)})
     .catch((err)=>console.log(err))
 
    
-  },[]);
+  },[page]);
+  
 
   useEffect(() => {
-    console.log("mama",products);
+    console.log("productsss",products);
   }, [products]);
 
 
 
-  return (     
+  
+  return (
+    <>
      <div  className="row row-cols-1 row-cols-md-3">
 
         {products.map((product) => (
@@ -32,7 +38,10 @@ import { ProductCard } from '../components/ProductCard'
         
 
     ))}
+    
     </div>
+    <Pagination page={page} setPage={setPage}/>
+    </>
     
   )
 }

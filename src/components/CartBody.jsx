@@ -24,7 +24,7 @@ export const CartBody = () => {
         </tbody>
       </table>
       <div className="text-end fw-bold fs-5 m-5">
-        {`Total: $${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}`}
+        {`Total: $${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}`}
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import LanguageContext from "./context/language";
 import { useState, Suspense, lazy } from "react";
+import Register from "./pages/Register";
 
 // Lazy load pages
 const ProductList = lazy(() => import("./pages/ProductList"));
@@ -10,7 +11,7 @@ const Cart = lazy(() => import("./pages/Cart"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
-  const [language, setLanguage] = useState("rtl");
+  const [language, setLanguage] = useState("ltr");
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<ProductList />} />
               <Route path="/product-details/:id" element={<ProductDetails />} />
               <Route path="/cart" element={<Cart />} />
+               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
