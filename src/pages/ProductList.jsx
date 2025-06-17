@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { getProducts } from '../apis/products'
 import { ProductCard } from '../components/ProductCard' 
-import { Pagination } from '../components/pagination'
+import { Pagination } from '../components/Pagination'
 
  const ProductList = () => {
    
@@ -32,13 +32,9 @@ import { Pagination } from '../components/pagination'
 
         {products.map((product) => (
         <div className="col" key={product.id}>
-        <ProductCard data={product}/>
-        
+        <ProductCard data={product}/> 
         </div>
-        
-
     ))}
-    
     </div>
     <Pagination page={page} setPage={setPage}/>
     </>

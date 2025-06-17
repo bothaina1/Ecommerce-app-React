@@ -2,13 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import LanguageContext from "./context/language";
 import { useState, Suspense, lazy } from "react";
-import Register from "./pages/Register";
+
 
 // Lazy load pages
 const ProductList = lazy(() => import("./pages/ProductList"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const Cart = lazy(() => import("./pages/Cart"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Register = lazy(() => import("./pages/Register"));
+
 
 function App() {
   const [language, setLanguage] = useState("ltr");
