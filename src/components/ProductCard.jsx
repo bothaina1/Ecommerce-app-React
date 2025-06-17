@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import StarRatings from 'react-star-ratings';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cart";
+import { useNavigate } from "react-router-dom";
 
 export const ProductCard = (props) => {
   const { data } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const viewDetails = () => {
+    navigate(`/product-details/${data.id}`);
+  };
 
   return (
     <div className="card h-100">
@@ -22,7 +29,6 @@ export const ProductCard = (props) => {
           rating={data.rating} // Current rating
           starRatedColor="gold"
           starHoverColor="orange"
-          changeRating={(newRating) => console.log(newRating)}
           numberOfStars={5}
           name="user-rating"
           starDimension="25px"
@@ -32,7 +38,10 @@ export const ProductCard = (props) => {
       </div>
 
       <div className="mb-3 d-flex justify-content-center">
-        <button className="btn btn-outline-dark mx-5 px-5 rounded-5"onClick={()=>dispatch(addToCart(data))}>
+        <button className="btn btn-outline-dark mx-4 px-3 rounded-5"onClick={viewDetails}>
+          View Details
+        </button>
+        <button className="btn btn-outline-dark px-3  rounded-5"onClick={()=>dispatch(addToCart(data))}>
           Add to Cart
         </button>
       </div>

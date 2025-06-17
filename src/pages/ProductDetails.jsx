@@ -76,7 +76,6 @@ import {addQuantityToCart} from "../store/slices/cart";
               rating={product.rating} // Current rating
               starRatedColor="green"
               starHoverColor="orange"
-              changeRating={(newRating) => console.log(newRating)}
               numberOfStars={5}
               name="user-rating"
               starDimension="20px"
